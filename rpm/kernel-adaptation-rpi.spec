@@ -1,13 +1,14 @@
 Name:       kernel-adaptation-rpi
 
 
+%define shorttag b7153ab
 %define kernel_version %{version}
 %define kernel_devel_dir %{_prefix}/src/kernels/%{kernel_version}
 
 Summary:    Kernel Adaptation RaspberryPi
-Version:    3.2.27
-Release:    3
-Group:      Kernel
+Version:    3.6.11
+Release:    1
+Group:      System/Kernel
 License:    GPLv2
 ExclusiveArch:  %{arm}
 URL:        https://github.com/raspberrypi/linux/
@@ -124,9 +125,15 @@ rm image*
 rm first32k.bin
 rm *.txt
 
+# rm .gitignore leackage and remove bad +x
+find %{buildroot}/usr/src/kernels/%{kernel_version} -name ".gitignore" -type f -exec rm {} \;
+find %{buildroot}/usr/src/kernels/%{kernel_version} -name "*.h" -type f -exec chmod a-x {} \;
+
 # mark modules executable so that strip-to-file can strip them
 find %{buildroot}/lib/modules/%{kernel_version} -name "*.ko" -type f -exec chmod u+x {} \;
 
+%fdupes %{buildroot}/lib/firmware
+%fdupes %{buildroot}/usr/src/kernels/%{kernel_version}
 
 %post
 
