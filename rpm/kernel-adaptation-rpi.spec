@@ -1,7 +1,7 @@
 Name:       kernel-adaptation-rpi
 
 
-%define shorttag b7153ab
+%define shorttag 49ee49c
 %define kernel_version %{version}
 %define kernel_devel_dir %{_prefix}/src/kernels/%{kernel_version}
 
