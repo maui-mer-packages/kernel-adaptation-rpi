@@ -1,18 +1,18 @@
 Name:       kernel-adaptation-rpi
 
 
-%define shorttag 49ee49c
+%define shorttag 7193cfe
 %define kernel_version %{version}
 %define kernel_devel_dir %{_prefix}/src/kernels/%{kernel_version}
 
 Summary:    Kernel Adaptation RaspberryPi
-Version:    3.6.11
+Version:    3.10.36
 Release:    1
 Group:      System/Kernel
 License:    GPLv2
 ExclusiveArch:  %{arm}
 URL:        https://github.com/raspberrypi/linux/
-Source0:    raspberrypi-linux.tar.xz
+Source0:    kernel-adaptation-rpi-%{version}.tar.xz
 Requires(post): kmod >= 9
 
 BuildRequires:  mkimage-rpi
@@ -39,7 +39,7 @@ Devel for RaspberryPi kernel
 
 
 %prep
-%setup -q -n raspberrypi-linux
+%setup -q -n %{name}-%{version}/raspberrypi-linux
 
 
 %build
