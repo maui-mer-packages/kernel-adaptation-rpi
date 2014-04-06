@@ -1,12 +1,12 @@
 Name:       kernel-adaptation-rpi
 
 
-%define shorttag 7193cfe
+%define shorttag dbddcf7
 %define kernel_version %{version}
 %define kernel_devel_dir %{_prefix}/src/kernels/%{kernel_version}
 
 Summary:    Kernel Adaptation RaspberryPi
-Version:    3.10.36
+Version:    3.14.0
 Release:    1
 Group:      System/Kernel
 License:    GPLv2
@@ -111,7 +111,7 @@ cp -a --parents arch/arm/mach-*/include %{buildroot}/%{kernel_devel_dir}
 cp -a --parents arch/arm/plat-*/include %{buildroot}/%{kernel_devel_dir}
 mkdir -p %{buildroot}/%{kernel_devel_dir}/include
 cd include
-cp -a acpi asm-generic config crypto drm generated keys linux math-emu media mtd net pcmcia rdma rxrpc scsi sound video trace %{buildroot}/%{kernel_devel_dir}/include
+cp -a acpi asm-generic config crypto drm generated keys linux math-emu media memory net pcmcia rdma rxrpc scsi sound video trace %{buildroot}/%{kernel_devel_dir}/include
 
 # Make sure the Makefile and version.h have a matching timestamp so that
 # external modules can be built
