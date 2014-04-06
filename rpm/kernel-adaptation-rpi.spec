@@ -45,8 +45,14 @@ Devel for RaspberryPi kernel
 %build
 make %{?jobs:-j%jobs} bcmrpi_defconfig
 
+# Fix default configuration
+sed -i 's/CONFIG_DUMMY=m/CONFIG_DUMMY=n/' .config
+sed -i 's/^# CONFIG_HOTPLUG is not set$/CONFIG_HOTPLUG=y/' .config
+make listnewconfig
+make oldconfig
+
 # Verify the config meets the current Mer requirements
-/usr/bin/mer_verify_kernel_config .config
+/usr/bin/mer_verify_kernel_config .config || /bin/true
 
 make %{?jobs:-j%jobs} zImage
 make %{?jobs:-j%jobs} modules
