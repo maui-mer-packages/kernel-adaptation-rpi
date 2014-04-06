@@ -17,6 +17,7 @@ Requires(post): kmod >= 9
 
 BuildRequires:  mkimage-rpi
 BuildRequires:  pkgconfig(ncurses)
+BuildRequires:  bc
 BuildRequires:  mer-kernel-checks
 BuildRequires:  kmod >= 9
 BuildRequires:  perl
