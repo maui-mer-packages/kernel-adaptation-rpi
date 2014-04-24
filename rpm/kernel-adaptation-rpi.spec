@@ -1,12 +1,12 @@
 Name:       kernel-adaptation-rpi
 
 
-%define shorttag dbddcf7
+%define shorttag e0001dd
 %define kernel_version %{version}
 %define kernel_devel_dir %{_prefix}/src/kernels/%{kernel_version}
 
 Summary:    Kernel Adaptation RaspberryPi
-Version:    3.14.0
+Version:    3.10.37
 Release:    1
 Group:      System/Kernel
 License:    GPLv2
